@@ -1,18 +1,24 @@
 package com.ming.abstractservice.domain.person.entity;
 
-import com.ming.abstractservice.domain.person.dto.request.PersonCreateRequest;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
+@Builder
 @RequiredArgsConstructor
 public class Person {
 
+    private final long id;
+
     private final String name;
 
-    private final String age;
+    private final int age;
 
     private final Gender gender;
 
     private final String favorate;
+
 
     public enum Gender {
         MALE,

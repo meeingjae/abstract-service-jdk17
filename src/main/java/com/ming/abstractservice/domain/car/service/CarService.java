@@ -2,6 +2,7 @@ package com.ming.abstractservice.domain.car.service;
 
 import com.ming.abstractservice.domain.car.dto.request.CarCreateRequest;
 import com.ming.abstractservice.domain.car.dto.response.CarCreateResponse;
+import com.ming.abstractservice.domain.car.entity.Car;
 import com.ming.abstractservice.domain.car.internal.CarClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,11 @@ public class CarService {
 
     public CarCreateResponse create(CarCreateRequest request) {
 
-        client.createCar();
+        Car car = client.createNewCar();
 
-        return null;
+        return CarCreateResponse.builder()
+                .carId(car.getId())
+                .carName(car.getName())
+                .build();
     }
 }
