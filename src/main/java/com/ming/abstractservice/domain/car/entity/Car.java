@@ -1,7 +1,11 @@
 package com.ming.abstractservice.domain.car.entity;
 
+import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
+@Builder
 @RequiredArgsConstructor
 public class Car {
 
