@@ -17,15 +17,12 @@
 -- --
 ## API
 * v1 api = (feature : 기능) - (1 : 1)
-  * 그림
+  ![](images/legacy(v1).png)
 * v2 api = (feature : 기능) - (n : n) ()
-  * 그림
+  ![](images/v2.png)
 * v3 api = (feature : 기능) - (n : n) ()
-  * 그림
+  ![](images/v3.png)
 -- --
 ## 기능
 * 생성 (create)
-* 조회 (list)
-* 삭제 (delete)
-> - 각각의 기능의 행위를 전송해주는 임의의 전달 매체가 있다. 
-> - if else 구문은 jdk17의 feature를 따르도록 한다
+> - 생성 기능의 행위를 전송해주는 임의의 전달 매체가 있다.
