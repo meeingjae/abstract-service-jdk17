@@ -1,0 +1,37 @@
+package com.ming.abstractservice.service;
+
+import com.ming.abstractservice.domain.car.entity.Car;
+import com.ming.abstractservice.domain.car.internal.CarClient;
+import com.ming.abstractservice.domain.company.entity.Company;
+import com.ming.abstractservice.domain.company.internal.CompanyClient;
+import com.ming.abstractservice.domain.person.entity.Person;
+import com.ming.abstractservice.domain.person.internal.PersonClient;
+import com.ming.abstractservice.dto.request.v2.V2CreateRequestDto;
+import com.ming.abstractservice.dto.response.v2.V2CreateResponseDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@RequiredArgsConstructor
+@Service
+public class V2Service {
+
+    private final CarClient     carClient;
+    private final CompanyClient companyClient;
+    private final PersonClient  personClient;
+
+    public V2CreateResponseDto createV2(V2CreateRequestDto request) {
+
+        V2CreateResponseDto.V2CreateResponseDtoBuilder response = V2CreateResponseDto.builder();
+
+        if (request.getCar() != null) {
+            Car car = carClient.createCar();
+            return response.id(car.getId()).name(car.getName()).build();
+        } else if (request.getCompany() != null) {
+            Company company = companyClient.createNewCompany();
+            return response.id(company.getId()).name(company.getName()).build();
+        } else {
+            Person person = personClient.createNewPerson();
+            return response.id(person.getId()).name(person.getName()).build();
+        }
+    }
+}
