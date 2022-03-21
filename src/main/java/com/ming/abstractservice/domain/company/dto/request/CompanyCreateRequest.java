@@ -1,7 +1,11 @@
 package com.ming.abstractservice.domain.company.dto.request;
 
+import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Builder
+@Getter
 @RequiredArgsConstructor
 public class CompanyCreateRequest {
 

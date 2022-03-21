@@ -15,7 +15,8 @@ public class CompanyService {
 
     public CompanyCreateResponse create(CompanyCreateRequest request) {
 
-        Company company = client.createNewCompany();
+        Company company = client.createNewCompany(request);
+
         return CompanyCreateResponse.builder()
                 .companyId(company.getId())
                 .companyName(company.getName())

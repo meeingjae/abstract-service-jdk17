@@ -15,7 +15,7 @@ public class CarService {
 
     public CarCreateResponse create(CarCreateRequest request) {
 
-        Car car = client.createNewCar();
+        Car car = client.createNewCar(request);
 
         return CarCreateResponse.builder()
                 .carId(car.getId())

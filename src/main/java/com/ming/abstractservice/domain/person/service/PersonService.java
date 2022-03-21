@@ -15,7 +15,8 @@ public class PersonService {
 
     public PersonCreateResponse create(PersonCreateRequest request) {
 
-        Person person = client.createNewPerson();
+        Person person = client.createNewPerson(request);
+
         return PersonCreateResponse.builder()
                 .personId(person.getId())
                 .name(person.getName())

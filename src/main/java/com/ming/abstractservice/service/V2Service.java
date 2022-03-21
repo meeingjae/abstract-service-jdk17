@@ -8,16 +8,14 @@ import com.ming.abstractservice.domain.person.entity.Person;
 import com.ming.abstractservice.domain.person.internal.PersonClient;
 import com.ming.abstractservice.dto.request.v2.V2CreateRequestDto;
 import com.ming.abstractservice.dto.response.v2.V2CreateResponseDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
 @Service
 public class V2Service {
 
-    private final CarClient     carClient;
-    private final CompanyClient companyClient;
-    private final PersonClient  personClient;
+    public CarClient     carClient;
+    public CompanyClient companyClient;
+    public PersonClient  personClient;
 
     public V2CreateResponseDto createV2(V2CreateRequestDto request) {
 
