@@ -2,26 +2,15 @@ package com.ming.abstractservice.domain.car.internal;
 
 import com.ming.abstractservice.domain.car.dto.request.CarCreateRequest;
 import com.ming.abstractservice.domain.car.entity.Car;
+import com.ming.abstractservice.dto.request.v3.V3CarCreateRequest;
+import com.ming.abstractservice.dto.request.v3.V3CreateRequestDto;
 import com.ming.abstractservice.entity.V3AbstractEntity;
 import com.ming.abstractservice.internal.V3AbstractInternal;
 import com.ming.abstractservice.util.IdGenerator;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
+@Component
 public interface CarClient extends V3AbstractInternal {
-
-    Car createCar();
-
-    default Car createNewCar() {
-
-        return Car.builder()
-                .id(IdGenerator.getNumberId())
-                .color(Car.CarColor.BLUE)
-                .type(Car.CarType.BMW)
-                .name("pabien")
-                .price("57000000")
-                .build();
-    }
 
     default Car createNewCar(CarCreateRequest request) {
 
@@ -34,9 +23,20 @@ public interface CarClient extends V3AbstractInternal {
                 .build();
     }
 
-    @Override
-    default V3AbstractEntity createEntity() {
+    default Car v3CreateNewCar(V3CarCreateRequest request) {
 
-        return createNewCar();
+        return Car.builder()
+                .id(IdGenerator.getNumberId())
+                .type(request.getType())
+                .color(request.getColor())
+                .name(request.getName())
+                .price(request.getPrice())
+                .build();
+    }
+
+    @Override
+    default V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
+
+        return v3CreateNewCar((V3CarCreateRequest) requestDto);
     }
 }

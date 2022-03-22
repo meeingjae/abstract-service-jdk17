@@ -3,8 +3,10 @@ package com.ming.abstractservice.dto.request.v3;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.ming.abstractservice.internal.InternalClientFactory;
 import com.ming.abstractservice.internal.V3AbstractInternal;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @JsonTypeName("COMPANY")
 @RequiredArgsConstructor
 public class V3CompanyCreateRequest extends V3CreateRequestDto {

@@ -4,15 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ming.abstractservice.controller.AbstractController;
 import com.ming.abstractservice.domain.car.controller.CarController;
 import com.ming.abstractservice.domain.car.dto.request.CarCreateRequest;
-import com.ming.abstractservice.domain.car.dto.response.CarCreateResponse;
 import com.ming.abstractservice.domain.car.entity.Car;
-import com.ming.abstractservice.domain.car.internal.CarClient;
 import com.ming.abstractservice.domain.car.service.CarService;
 import com.ming.abstractservice.domain.company.controller.CompanyController;
-import com.ming.abstractservice.domain.company.internal.CompanyClient;
 import com.ming.abstractservice.domain.company.service.CompanyService;
 import com.ming.abstractservice.domain.person.controller.PersonController;
-import com.ming.abstractservice.domain.person.internal.PersonClient;
 import com.ming.abstractservice.domain.person.service.PersonService;
 import com.ming.abstractservice.service.V2Service;
 import com.ming.abstractservice.service.V3Service;
@@ -67,15 +63,6 @@ class AbstractServiceApplicationTests {
     @Autowired
     public V3Service v3Service;
 
-    @Autowired
-    public CarClient carClient;
-
-    @Autowired
-    public CompanyClient companyClient;
-
-    @Autowired
-    public PersonClient personClient;
-
     @Test
     void contextLoads() {
 
@@ -92,12 +79,7 @@ class AbstractServiceApplicationTests {
                 .type(Car.CarType.BMW)
                 .build();
 
-        CarCreateResponse response = CarCreateResponse.builder()
-                .carId(1L)
-                .carName("ming")
-                .build();
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/car")
+        mockMvc.perform(MockMvcRequestBuilders.post("/car")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(carCreateRequest)))
                 .andExpect(status().isOk())

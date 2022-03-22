@@ -22,13 +22,13 @@ public class V2Service {
         V2CreateResponseDto.V2CreateResponseDtoBuilder response = V2CreateResponseDto.builder();
 
         if (request.getCar() != null) {
-            Car car = carClient.createCar();
+            Car car = carClient.createNewCar(request.getCar());
             return response.id(car.getId()).name(car.getName()).build();
         } else if (request.getCompany() != null) {
-            Company company = companyClient.createNewCompany();
+            Company company = companyClient.createNewCompany(request.getCompany());
             return response.id(company.getId()).name(company.getName()).build();
         } else {
-            Person person = personClient.createNewPerson();
+            Person person = personClient.createNewPerson(request.getPerson());
             return response.id(person.getId()).name(person.getName()).build();
         }
     }

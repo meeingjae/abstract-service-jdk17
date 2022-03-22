@@ -1,11 +1,9 @@
 package com.ming.abstractservice.internal;
 
+import com.ming.abstractservice.dto.request.v3.V3CreateRequestDto;
 import com.ming.abstractservice.entity.V3AbstractEntity;
 
 public interface V3AbstractInternal {
 
-    default V3AbstractEntity createEntity() {
-
-        return null;
-    }
+    V3AbstractEntity createEntity(V3CreateRequestDto requestDto);
 }
