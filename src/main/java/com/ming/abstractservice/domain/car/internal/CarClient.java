@@ -10,9 +10,9 @@ import com.ming.abstractservice.util.IdGenerator;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface CarClient extends V3AbstractInternal {
+public class CarClient implements V3AbstractInternal {
 
-    default Car createNewCar(CarCreateRequest request) {
+    public Car createNewCar(CarCreateRequest request) {
 
         return Car.builder()
                 .id(IdGenerator.getNumberId())
@@ -23,7 +23,7 @@ public interface CarClient extends V3AbstractInternal {
                 .build();
     }
 
-    default Car v3CreateNewCar(V3CarCreateRequest request) {
+    public Car v3CreateNewCar(V3CarCreateRequest request) {
 
         return Car.builder()
                 .id(IdGenerator.getNumberId())
@@ -35,7 +35,7 @@ public interface CarClient extends V3AbstractInternal {
     }
 
     @Override
-    default V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
+    public V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
 
         return v3CreateNewCar((V3CarCreateRequest) requestDto);
     }

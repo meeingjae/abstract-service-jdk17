@@ -10,9 +10,9 @@ import com.ming.abstractservice.util.IdGenerator;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface PersonClient extends V3AbstractInternal {
+public class PersonClient implements V3AbstractInternal {
 
-    default Person createNewPerson(PersonCreateRequest request) {
+    public Person createNewPerson(PersonCreateRequest request) {
 
         return Person.builder()
                 .id(IdGenerator.getNumberId())
@@ -23,7 +23,7 @@ public interface PersonClient extends V3AbstractInternal {
                 .build();
     }
 
-    default Person v3CreateNewPerson(V3PersonCreateRequest request) {
+    public Person v3CreateNewPerson(V3PersonCreateRequest request) {
 
         return Person.builder()
                 .id(IdGenerator.getNumberId())
@@ -35,7 +35,7 @@ public interface PersonClient extends V3AbstractInternal {
     }
 
     @Override
-    default V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
+    public V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
 
         return v3CreateNewPerson((V3PersonCreateRequest) requestDto);
     }

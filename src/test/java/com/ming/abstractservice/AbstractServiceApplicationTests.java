@@ -81,6 +81,7 @@ class AbstractServiceApplicationTests {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/car")
                 .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(carCreateRequest)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.carId", 1L).exists())
