@@ -10,9 +10,9 @@ import com.ming.abstractservice.util.IdGenerator;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface CompanyClient extends V3AbstractInternal {
+public class CompanyClient implements V3AbstractInternal {
 
-    default Company createNewCompany(CompanyCreateRequest request) {
+    public Company createNewCompany(CompanyCreateRequest request) {
 
         return Company.builder()
                 .id(IdGenerator.getNumberId())
@@ -23,7 +23,7 @@ public interface CompanyClient extends V3AbstractInternal {
                 .build();
     }
 
-    default Company v3CreateNewCompany(V3CompanyCreateRequest request) {
+    public Company v3CreateNewCompany(V3CompanyCreateRequest request) {
 
         return Company.builder()
                 .id(IdGenerator.getNumberId())
@@ -35,7 +35,7 @@ public interface CompanyClient extends V3AbstractInternal {
     }
 
     @Override
-    default V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
+    public V3AbstractEntity createEntity(V3CreateRequestDto requestDto) {
 
         return v3CreateNewCompany((V3CompanyCreateRequest) requestDto);
     }
