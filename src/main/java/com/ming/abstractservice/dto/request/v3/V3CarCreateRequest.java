@@ -3,6 +3,7 @@ package com.ming.abstractservice.dto.request.v3;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.ming.abstractservice.internal.InternalClientFactory;
 import com.ming.abstractservice.internal.V3AbstractInternal;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -10,6 +11,7 @@ import static com.ming.abstractservice.domain.car.entity.Car.CarColor;
 import static com.ming.abstractservice.domain.car.entity.Car.CarType;
 
 @Getter
+@Builder
 @JsonTypeName("CAR")
 @RequiredArgsConstructor
 public class V3CarCreateRequest extends V3CreateRequestDto {
@@ -25,6 +27,7 @@ public class V3CarCreateRequest extends V3CreateRequestDto {
     private final CarColor color;
 
     public V3AbstractInternal getClient(InternalClientFactory factory) {
+
         return factory.getCarClient();
     }
 }

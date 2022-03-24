@@ -12,9 +12,9 @@ import lombok.RequiredArgsConstructor;
         include = JsonTypeInfo.As.EXISTING_PROPERTY,
         property = "dtoType")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = V3CarCreateRequest.class, name = "car"),
-        @JsonSubTypes.Type(value = V3CompanyCreateRequest.class, name = "company"),
-        @JsonSubTypes.Type(value = V3PersonCreateRequest.class, name = "person") })
+        @JsonSubTypes.Type(value = V3CarCreateRequest.class, name = "CAR"),
+        @JsonSubTypes.Type(value = V3CompanyCreateRequest.class, name = "COMPANY"),
+        @JsonSubTypes.Type(value = V3PersonCreateRequest.class, name = "PERSON") })
 @Getter
 @RequiredArgsConstructor
 public abstract class V3CreateRequestDto {

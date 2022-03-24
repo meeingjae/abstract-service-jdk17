@@ -19,7 +19,7 @@ public class PersonService {
 
         return PersonCreateResponse.builder()
                 .personId(person.getId())
-                .name(person.getName())
+                .personName(person.getName())
                 .build();
     }
 }
