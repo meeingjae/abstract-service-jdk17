@@ -5,12 +5,14 @@ import com.ming.abstractservice.dto.response.v3.V3CreateResponseDto;
 import com.ming.abstractservice.entity.V3AbstractEntity;
 import com.ming.abstractservice.internal.InternalClientFactory;
 import com.ming.abstractservice.internal.V3AbstractInternal;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class V3Service {
 
-    InternalClientFactory factory;
+    private final InternalClientFactory factory;
 
     /**
      * 추상 클래스를 이용한 service 로직 단순화

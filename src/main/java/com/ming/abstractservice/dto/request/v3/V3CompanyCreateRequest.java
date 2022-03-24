@@ -3,9 +3,11 @@ package com.ming.abstractservice.dto.request.v3;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.ming.abstractservice.internal.InternalClientFactory;
 import com.ming.abstractservice.internal.V3AbstractInternal;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Builder
 @Getter
 @JsonTypeName("COMPANY")
 @RequiredArgsConstructor
